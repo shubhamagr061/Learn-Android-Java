@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">BEComputer</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="txtLogin">Login</string>
+    <string name="txtUsername">Username</string>
+
 </resources>

@@ -11,7 +11,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/txtLogin"
         android:textColor="@color/black"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -21,7 +21,7 @@
 
     <EditText
         android:layout_marginTop="40dp"
-        android:hint="Username"
+        android:hint="@string/txtUsername"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
 
     <Button
         android:layout_marginTop="16dp"
-        android:text="Login"
+        android:text="@string/txtLogin"
         app:layout_constraintTop_toBottomOf="@+id/etPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -50,11 +50,21 @@ public class SignupActivity extends AppCompatActivity {
         email = etEmail.getText().toString();
         password = etPassword.getText().toString();
 
-        if(username.isEmpty()){return  false;}
-        if(fullname.isEmpty()){return false;}
-        if(email.isEmpty()){return false;}
-        if(password.isEmpty()){return false;}
-
+        if(username.isEmpty()){
+            etUsername.setError("Username cannot be blank");
+            return  false;
+        }
+        if(fullname.isEmpty()){
+            etFullname.setError("Fullname cannot be blank");
+            return false;}
+        if(email.isEmpty()){
+            etEmail.setError("Email cannot be blank");
+            return false;
+        }
+        if(password.isEmpty()){
+            etPassword.setError("Password cannot be blank");
+            return false;
+        }
         return true;
     }
 }
