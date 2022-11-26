@@ -7,5 +7,6 @@
 
     <string name="txtLogin">Login</string>
     <string name="txtUsername">Username</string>
+    <string name="txtProduct">Product</string>
 
 </resources>
