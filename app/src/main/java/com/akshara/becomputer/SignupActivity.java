@@ -1,14 +1,15 @@
 package com.akshara.becomputer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -42,8 +43,17 @@ public class SignupActivity extends AppCompatActivity {
                 }
             }
         });
+
+        setAppBar();
+
     }
 
+    private void setAppBar(){
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
+    }
     private boolean meroValidation() {
         username = etUsername.getText().toString();
         fullname = etFullname.getText().toString();
@@ -66,5 +76,13 @@ public class SignupActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
