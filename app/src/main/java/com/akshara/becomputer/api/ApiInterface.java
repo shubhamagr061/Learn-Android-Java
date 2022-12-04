@@ -8,4 +8,5 @@ import retrofit2.http.GET;
 public interface ApiInterface {
     @GET("api/food")
     Call<FoodResponse> getFood();
+
 }
