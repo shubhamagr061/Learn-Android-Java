@@ -1,9 +1,14 @@
-package com.akshara.becomputer.model;
+package com.akshara.becomputer.database.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-public class Food {
+@Entity
+public class FoodEntity{
+    @PrimaryKey(autoGenerate = true)
     private int id;
+    private int food_id;
     private String name;
     private String price;
     private String status;
@@ -15,6 +20,14 @@ public class Food {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getFood_id() {
+        return food_id;
+    }
+
+    public void setFood_id(int food_id) {
+        this.food_id = food_id;
     }
 
     public String getName() {
