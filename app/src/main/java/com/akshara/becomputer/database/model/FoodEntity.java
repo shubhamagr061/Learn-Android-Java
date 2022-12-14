@@ -10,8 +10,8 @@ public class FoodEntity{
     private int id;
     private int food_id;
     private String name;
-    private String price;
-    private String status;
+    private double price;
+    private int status;
     private String url;
 
     public int getId() {
@@ -38,19 +38,19 @@ public class FoodEntity{
         this.name = name;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

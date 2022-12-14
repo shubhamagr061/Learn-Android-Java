@@ -1,38 +1,55 @@
 package com.akshara.becomputer;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
+import com.akshara.becomputer.adapter.DatabaseAdapter;
 import com.akshara.becomputer.app.App;
 import com.akshara.becomputer.database.AppDatabase;
 import com.akshara.becomputer.database.dao.FoodDao;
 import com.akshara.becomputer.database.model.FoodEntity;
+import com.akshara.becomputer.databinding.ActivityDatabaseBinding;
+
+import java.util.ArrayList;
 
 public class DatabaseActivity extends AppCompatActivity {
-
-    private AppDatabase db;
-    private FoodDao foodDao;
+//
+//    private RecyclerView rvRecords;
+//    private AppDatabase db;
+//    private FoodDao foodDao;
+//
+    private ActivityDatabaseBinding binding;
+//    private DatabaseAdapter adapter;
+//    private ArrayList<FoodEntity> foodEntityArrayList = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_database);
+        binding = ActivityDatabaseBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
-        db = App.db;
-        foodDao = db.foodDao();
+        binding.btnAddRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DatabaseActivity.this, AddRecordActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        FoodEntity food1 = new FoodEntity();
-        food1.setName("Burger");
-        food1.setFood_id(23);
-        food1.setPrice("250");
-        food1.setStatus("Available");
-
-//        foodDao.insertItem(food1);
-        foodDao.deleteItem(food1);
-
-        Log.d("TEST_FOOD", "DB Record Size ==> "+foodDao.getAllItems().size());
+        binding.rvRecords.setLayoutManager(new LinearLayoutManager(
+                this,
+                LinearLayoutManager.VERTICAL,
+                false
+        ));
 
     }
 }
