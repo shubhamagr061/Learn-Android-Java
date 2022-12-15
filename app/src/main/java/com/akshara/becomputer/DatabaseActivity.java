@@ -12,23 +12,21 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.akshara.becomputer.adapter.DatabaseAdapter;
+import com.akshara.becomputer.adapter.FoodEntityAdapter;
+import com.akshara.becomputer.adapter.ProductAdapter;
 import com.akshara.becomputer.app.App;
 import com.akshara.becomputer.database.AppDatabase;
 import com.akshara.becomputer.database.dao.FoodDao;
 import com.akshara.becomputer.database.model.FoodEntity;
 import com.akshara.becomputer.databinding.ActivityDatabaseBinding;
+import com.akshara.becomputer.model.Food;
 
 import java.util.ArrayList;
 
 public class DatabaseActivity extends AppCompatActivity {
-//
-//    private RecyclerView rvRecords;
-//    private AppDatabase db;
-//    private FoodDao foodDao;
-//
     private ActivityDatabaseBinding binding;
-//    private DatabaseAdapter adapter;
-//    private ArrayList<FoodEntity> foodEntityArrayList = new ArrayList<>();
+    private ArrayList<FoodEntity> foodEntityArrayList = new ArrayList<>();
+    private FoodEntityAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,11 +43,16 @@ public class DatabaseActivity extends AppCompatActivity {
             }
         });
 
-        binding.rvRecords.setLayoutManager(new LinearLayoutManager(
-                this,
-                LinearLayoutManager.VERTICAL,
-                false
-        ));
+        binding.rvRecords.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        foodEntityArrayList.addAll(App.foodDao.getAllItems());
+        adapter = new FoodEntityAdapter(DatabaseActivity.this, foodEntityArrayList);
+        binding.rvRecords.setAdapter(adapter);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.update((ArrayList<FoodEntity>) App.foodDao.getAllItems());
     }
 }
