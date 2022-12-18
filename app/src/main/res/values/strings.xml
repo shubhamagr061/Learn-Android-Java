@@ -19,5 +19,6 @@
     <string name="txtPrice">Price</string>
     <string name="txtFoodId">Food id</string>
     <string name="txtDeleteAll">Delete all</string>
+    <string name="txtAllFood">All Food</string>
 
 </resources>

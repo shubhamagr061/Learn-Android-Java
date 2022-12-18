@@ -35,6 +35,8 @@ public class DatabaseActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        setAppBar();
+
         binding.btnAddRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,6 +50,22 @@ public class DatabaseActivity extends AppCompatActivity {
         adapter = new FoodEntityAdapter(DatabaseActivity.this, foodEntityArrayList);
         binding.rvRecords.setAdapter(adapter);
 
+        binding.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                App.foodDao.deleteAll();
+            }
+        });
+
+
+    }
+
+    private void setAppBar() {
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setTitle(R.string.txtAllFood);
+        }
     }
 
     @Override
